@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 text-center" id="top-bar">
+      <img src= "https://www.google.com/imgres?imgurl=http%3A%2F%2Fcliparting.com%2Fwp-content%2Fuploads%2F2016%2F09%2FHamburger-vector-clipart-image.png&imgrefurl=http%3A%2F%2Fcliparting.com%2Fhamburger-clipart%2F&docid=J1nR7n3655Bt3M&tbnid=OBqKR9ZueDQdBM%3A&vet=1&w=853&h=713&client=safari&bih=672&biw=1240&ved=0ahUKEwiqlsSq0cHVAhWr5IMKHaSgBr8QxiAIFigB&iact=c&ictx=1" alt="burger" />
+      <h1> Eat-Da-Burger! </h1>
+    </div>
+
+<div class="col-xs-6 text-center" class="task">
+			<div class="row">
+			  {{#each burger}}
+			  {{#unless this.devoured}}
+				<div class="col-xs-9 text-center">
+					<pre>{{this.id}}. {{this.burger_name}}</pre>
+				</div>
+				<div class="col-xs-3 text-center">
+					<form method="POST" action="/burgers/update?_method=PUT" class="button-size">
+						<input input type="hidden" type="text" name="burger_id" value={{this.id}}><br>
+						<button type="submit" class="btn btn-default">Devour it!</button>
+					</form>
+				</div>
+				{{/unless}}
+			  {{/each}}
+			</div>
+		</div>
+		
+    <div class="col-xs-6 text-center" class="task">
+			  {{#each burger}}
+			  	{{#if this.devoured}}
+			  		<input class="form-control" type="text" placeholder="{{this.id}} . {{this.burger_name}}" readonly>
+				{{/if}}
+			  {{/each}}
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 text-center enter_section">
+			<form action="/burgers/create" method="POST">
+				<input type="text" class="form-control" name="burger_name" value="" id="enter_text">
+				<button type="submit" class="btn btn-primary" id="text-enter-button">Submit</button>
+			</form>
+			<p>Enter a burger you want to eat Click the "Submit" button.</p>
+		</div>
+	</div>
+</div>
